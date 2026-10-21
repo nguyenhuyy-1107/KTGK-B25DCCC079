@@ -5,6 +5,7 @@ import { useFetch } from "../hooks/useFetch";
 import PostCard from "../components/PostCard";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
+
 export default function HomePage() {
   const { data, loading, error, reload } = useFetch((signal) => fetchPosts(signal));
   const [keyword, setKeyword] = useState("");
@@ -28,6 +29,7 @@ export default function HomePage() {
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
       />
+
       {loading && <Loading text="Đang tải bài viết..." />}
       {error && <ErrorMessage message={error} onRetry={reload} />}
 
